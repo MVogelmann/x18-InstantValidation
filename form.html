@@ -21,7 +21,7 @@
             <label for="username" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-2">
               <input type="text" id="user" class="form-control input-md"
-                  placeholder="myusername" />
+                  placeholder="myusername"  oninput="validateUsername();" />
               <span id="usernameError" class="control-label hidden-message">
                 Error Placeholder (hidden)
               </span>
@@ -33,7 +33,7 @@
             <label for="username" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-2">
               <input type="password" id="pass" class="form-control input-md"
-                  placeholder="mypassword" />
+                  placeholder="mypassword" oninput="validatePassword();"/>
               <span id="passwordError" class="control-label hidden-message">
                 Error Placeholder (hidden)
               </span>
@@ -43,7 +43,7 @@
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="button" class="btn btn-primary col-sm-1"
-              onclick="validate();"> <!-- Run JavaScript to validate input /-->
+              onclick="register();"> <!-- Run JavaScript to validate input /-->
               Register
             </button>
           </div>

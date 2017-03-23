@@ -1,22 +1,15 @@
-function validate(){
-  //Grab the user's input and store in variables
-  var userEntered = document.getElementById("user").value;
-  var passEntered = document.getElementById("pass").value;
+//---------- global variables (can be used in all functions) ----------------
+var userEntered;
+var passEntered;
 
-  //------------------------ Checking username -------------------------------
-  if (userEntered.length < 6) {
-    document.getElementById("usernameError").innerHTML="Username must have at least 6 characters!";
-    userError();
-  }
-  else if (userEntered.search(" ") !== -1) {
-    document.getElementById("usernameError").innerHTML="Username must not contain blanks!";
-    userError();
-  }
-  //ELSE password is VALID
-  else {
-    userSuccess();
-  }
-  //------------------------ Checking password -------------------------------
+//--------------------------- alert function --------------------------------
+function register(){
+  alert("Username: " + userEntered + " \nPassword: " + passEntered);
+}
+
+//------------------------ Checking password -------------------------------
+function validatePassword(){
+  passEntered = document.getElementById("pass").value;
   if (passEntered.length < 6) {
     //Show message that there is an error with the password...
     document.getElementById("passwordError").innerHTML="Password must have at least 6 characters!";
@@ -43,8 +36,27 @@ function validate(){
   }
 }
 
+//------------------------ Checking username -------------------------------
+function validateUsername(){
+  userEntered = document.getElementById("user").value;
+  if (userEntered.length < 6) {
+    document.getElementById("usernameError").innerHTML="Username must have at least 6 characters!";
+    userError();
+  }
+  else if (userEntered.search(" ") !== -1) {
+    document.getElementById("usernameError").innerHTML="Username must not contain blanks!";
+    userError();
+  }
+  //ELSE User is VALID
+  else {
+    userSuccess();
+  }
+}
+
+
 //---------------------------Subroutines-----------------------------
 function userError() {
+  document.getElementById("usernameGroup").classList.remove("has-success");
   document.getElementById("usernameError").classList.remove("hidden-message");
   document.getElementById("usernameError").classList.add("shown-message");
   //Turn the username items red
@@ -52,6 +64,7 @@ function userError() {
 }
 
 function passError() {
+  document.getElementById("passwordGroup").classList.remove("has-success");
   document.getElementById("passwordError").classList.remove("hidden-message");
   document.getElementById("passwordError").classList.add("shown-message");
   //Turn the password items red
